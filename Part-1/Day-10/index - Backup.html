@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id>
+    <style>
+        table,tr,td,th{
+            border: 2px solid blue;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th style="background-color: chartreuse;" onclick="sortings()"><b>Nama</b></th>
+                    <th style="background-color: chartreuse;" onclick="sortingss()"><b>Pekerjaan</b></th>
+                    <th style="background-color: chartreuse;" onclick="sortingsss()"><b>Umur</b></th>
+                    <th style="background-color: chartreuse;"><b>Picture</b></th>
+                </tr>    
+            </thead>
+            <tbody id = "datangawur">
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><input id ="inputnama" type = "text" placeholder = "Input Nama" required></td>
+                    <td><input id ="inputkerja" type = "text" placeholder = "Input Pekerjaan" required></td>
+                    <td><input id ="inputumur" type = "text" placeholder = "Input Umur" required></td>
+                    <td><input id ="inputfoto" type = "text" placeholder = "Input Picture" required></td>
+                    <td><button style="background-color: green;" onclick = "addData()">Tambah</button></td>
+                </tr>    
+            </tfoot>
+        </table>    
+    </center>
+    <script>      
+        class arrData{
+            constructor(nama,pekerjaan,umur,foto){
+                this.nama = nama
+                this.pekerjaan = pekerjaan
+                this.umur = umur
+                this.foto = foto
+            }
+        }
+        let dataorg = [new arrData('oja','tukangsate',40,'https://upload.wikimedia.org/wikipedia/id/b/ba/Andrea_Adhan.jpg'),
+                       new arrData('zudi','tukangnasigoreng',35,'https://img.inews.id/media/822/files/inews_new/2019/11/15/budis1.jpg'),
+                       new arrData('booney','tukangsiomay',30,'https://upload.wikimedia.org/wikipedia/commons/6/60/Zarya-MU_%286%29.jpg')] 
+        
+        const showData = () => {
+            let hasil = ''
+            let i = 0
+            dataorg.forEach(({nama,pekerjaan,umur,foto}) => {
+                hasil += `<tr>
+                          <td style="background-color: aqua;">${nama}</td>
+                          <td style="background-color: aqua;">${pekerjaan}</td>
+                          <td style="background-color: aqua;">${umur}</td>
+                          <td style="background-color: aqua;"><img src = ${foto} width = '250' height = '250' px></td>
+                          <td style="background-color: aqua;"><button style="background-color: red;" onclick = "delData(${i})">Hafuz</button></td>
+                          </tr>`
+                        i++
+            })
+            document.getElementById("datangawur").innerHTML = hasil
+        }
+        const addData = () => {
+            let inputnams = document.getElementById('inputnama').value
+            let inputkers = document.getElementById('inputkerja').value
+            let inputums = document.getElementById('inputumur').value
+            let inputfots = document.getElementById('inputfoto').value
+            if(inputnams == '' || inputkers == '' || inputums == '' || inputfots == ''){
+                alert('Ada input kosong. Lengkapin gan.')
+            }else{
+                let newdata = new arrData(inputnams,inputkers,inputums,inputfots)
+                dataorg.push(newdata)
+                alert(`Data ditambah`)
+            }
+            showData()  
+        }
+        const delData = (deleteIndex) => {
+            dataorg.splice(deleteIndex,1)
+            showData()
+            if(dataorg == ''){
+                alert('Data Kosong.')
+            }
+        }
+        let cond = 0
+        const sortings = () => {
+            function urut(a,b){
+                if(a.nama < b.nama){
+                    if(cond == 0){
+                        return -1
+                    }return 1
+                }
+                if(a.nama > b.nama){
+                    if(cond == 0){
+                        return 1
+                    }return -1
+                }
+            }
+            dataorg.sort(urut)
+            if(cond == 0){
+                cond = 1
+            }else{
+                cond = 0
+            }
+            showData()
+        }
+        const sortingss = () => {
+            function urut(a,b){
+                if(a.pekerjaan < b.pekerjaan){
+                    if(cond == 0){
+                        return -1
+                    }return 1
+                }
+                if(a.pekerjaan > b.pekerjaan){
+                    if(cond == 0){
+                        return 1
+                    }return -1
+                }
+            }
+            dataorg.sort(urut)
+            if(cond == 0){
+                cond = 1
+            }else{
+                cond = 0
+            }
+            showData()
+        }
+        const sortingsss = () => {
+            function urut(a,b){
+                if(a.umur < b.umur){
+                    if(cond == 0){
+                        return -1
+                    }return 1
+                }
+                if(a.umur > b.umur){
+                    if(cond == 0){
+                        return 1
+                    }return -1
+                }
+            }
+            dataorg.sort(urut)
+            if(cond == 0){
+                cond = 1
+            }else{
+                cond = 0
+            }
+            showData()
+        }
+        showData()
+        //tugas : pastikan semua keisi,buat function sort,jika klik nama maka sort a-z klik lagi z-a,pekerjaan,umur,saat kosong alert data kosong/page hanya tulisan data kosong
+    </script>
+</body>
+</html>

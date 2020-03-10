@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //function first last
+        // let input = prompt('Masukkan Kata:')
+        // let potong = input.slice(1,input.length-1)
+        // alert(potong + input.length)
+        
+        //function remove vowels
+        var removevowel = function(hapusvokal){
+            let result = ''
+            for(i = 0; i < hapusvokal.length; i++){
+                var kata = hapusvokal[i]
+                if('aiueo'.match(kata.toLowerCase() == null )){
+                    result += kata
+                }
+            }
+            return result
+        }
+    </script>
+</body>
+</html>

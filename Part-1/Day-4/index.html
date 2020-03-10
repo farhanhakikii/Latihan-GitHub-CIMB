@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     let arrItem = ['Mangga', 'Jeruk', 'Pisang']   
+     let arrStock = [100, 200, 300]
+     let arrPrice = [5000, 1000, 2000]
+     let arrInput = [0, 0, 0]
+     let ulang
+     
+     do{
+     do{
+     do{
+     var temp = 'Daftar Buah \n\n'
+     for(i = 0; i < arrItem.length; i++){
+        temp += `${i+1}. \t ${arrItem[i]} \t Rp. ${arrPrice[i]} /pcs, Jumlah Stok : ${arrStock[i]} \n`
+     }
+     let halawal = prompt(`${temp} \n Silahkan Pilih : `)
+     if(halawal.toUpperCase() == 'MANGGA' || halawal == '1'){
+        do{
+        belimangga = parseInt(prompt('Silahkan masukkan jumlah mangga :'))
+        if (belimangga > arrStock[0]){
+            alert(`Jumlah pembelian melebihi stok, stok tersedia ${arrStock[0]}`)
+            ulang = true
+        }else if(belimangga < 0){
+            alert(`Jumlah pembelian tidak valid, stok tersedia ${arrStock[0]}`)
+            ulang = true
+        }else if((belimangga <= arrStock[0] && belimangga > 0) || belimangga == 0){
+            arrInput[0] += belimangga
+            ulang = false
+        } else{
+            ulang = true
+        }
+        }while(ulang == true)
+     }else if(halawal.toUpperCase() == 'JERUK' || halawal == '2'){
+        do{
+        belijeruk = parseInt(prompt('Silahkan masukkan jumlah jeruk :'))
+        if (belijeruk > arrStock[1]){
+            alert(`Jumlah pembelian melebihi stok, stok tersedia ${arrStock[1]}`)
+            ulang = true
+        }else if(belijeruk < 0){
+            alert(`Jumlah pembelian tidak valid, stok tersedia ${arrStock[1]}`)
+            ulang = true
+        }else if((belijeruk <= arrStock[1] && belijeruk > 0) || belijeruk == 0){
+            arrInput[1] += belijeruk
+            ulang = false
+        }else{
+            ulang = true
+        }
+        }while(ulang == true)
+     }else if(halawal.toUpperCase() == 'PISANG' || halawal == '3'){
+        do{   
+        belipisang = parseInt(prompt('Silahkan masukkan jumlah pisang :'))
+        if (belipisang > arrStock[2]){
+            alert(`Jumlah pembelian melebihi stok, stok tersedia ${arrStock[2]}`)
+            ulang = true
+        }else if(belipisang < 0){
+            alert(`Jumlah pembelian tidak valid, stok tersedia ${arrStock[2]}`)
+            ulang = true
+        }else if((belipisang <= arrStock[2] && belipisang > 0) || belipisang == 0 ){
+            arrInput[2] += belipisang
+            ulang = false
+        }else{
+            ulang = true
+        }
+        }while(ulang == true)
+     }else{
+         ulang = true
+     }
+    }while(ulang == true)
+     var tambah = confirm(`\t\t\tMau beli barang Lagi?\nJika tidak, akan masuk ke halaman pembayaran.`)
+     if (tambah == true){
+        ulang = true
+     }else{
+        ulang = false
+     }
+
+    checkout = `Daftar Belanjaan Anda :\nNo.\tItem\t\tJumlah\n`
+    count = 1
+    for(i = 0;i < arrInput.length; i++){
+        if(arrInput[i]>0){
+            checkout += `${count}\t${arrItem[i]}\t${arrInput[i]}\n`
+            count++
+        }
+    }
+
+    }while(ulang == true)
+    
+        var totalbelanja = arrInput[0]*arrPrice[0] + arrInput[1]*arrPrice[1] + arrInput[2]*arrPrice[2]
+        var uangbayar = prompt(`${checkout}\nTotal belanja anda Rp. ${totalbelanja}\nSilahkan masukkan uang anda.`)
+
+          if (uangbayar < totalbelanja) {
+            kurang = totalbelanja - uangbayar;
+            tutupkurang = prompt(`Uang anda kurang Rp ${kurang}\nSilahkan Masukkan Tambahan Pembayaran:`)
+            if (tutupkurang == kurang) {
+              alert(`Terimakasih sudah membayar kekurangan dengan uang pas.`)
+            } else if (tutupkurang > kurang) {
+              kembalians = tutupkurang - kurang;
+              alert(`Terimakasih sudah membayar kekurangan, kembalian anda ${kembalians}`)
+            } else {
+              kuranglagi = kurang - tutupkurang
+              alert(`Uang anda masih kurang ${kuranglagi}`)
+            }
+          } else if (uangbayar == totalbelanja) {
+            alert(`Terimakasih sudah membayar dengan uang pas`)
+          } else if (uangbayar > totalbelanja) {
+            kembalian = uangbayar - totalbelanja;
+            alert(`Kembalian anda Rp ${kembalian}`)
+          }
+          arrStock[0] -= arrInput[0] 
+          arrStock[1] -= arrInput[1] 
+          arrStock[2] -= arrInput[2]
+          arrInput = [0, 0, 0] 
+        
+        var belanjasetelahcheckout = confirm('Halo. Mau Belanja?')
+        if(belanjasetelahcheckout == true){
+            ulang = true
+        }else{
+            ulang = false
+        }
+     }while(ulang == true)    
+    </script>
+</body>
+</html>

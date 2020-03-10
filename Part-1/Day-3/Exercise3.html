@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //stok buah
+      var stmg = 25000;
+      var stjr = 25000;
+      var stnn = 25000;
+      var stap = 25000;
+      //harga buah
+      var hrmg = 5000;
+      var hrjr = 1000;
+      var hrnn = 7000;
+      var hrap = 3000;
+      let allprog = true;
+      while (allprog) {
+        alert("Halo. Selamat Berbelanja. :D");
+        alert(
+          "Buah      Harga     Stok\n" +
+            "Mangga  " +
+            hrmg +
+            "      " +
+            stmg +
+            "\n" +
+            "Jeruk      " +
+            hrjr +
+            "      " +
+            stjr +
+            "\n" +
+            "Nanas     " +
+            hrnn +
+            "     " +
+            stnn +
+            "\n" +
+            "Apel        " +
+            hrap +
+            "     " +
+            stap +
+            "\n"
+        );
+        let cmg;
+        do {
+          var mangga = prompt("Jumlah Pembelian Buah Mangga");
+          if (mangga > stmg) {
+            alert("Jumlah pembelian melebihi stok. Harap isi kembali.");
+            cmg = true;
+          } else if (mangga < 0) {
+            alert("Angka anda salah. Harap isi kembali.");
+            cmg = true;
+          } else {
+            cmg = false;
+          }
+        } while (cmg);
+        let cjr;
+        do {
+          var jeruk = prompt("Jumlah Pembelian Buah Jeruk");
+          if (jeruk > stjr) {
+            alert("Jumlah pembelian melebihi stok. Harap isi kembali.");
+            cjr = true;
+          } else if (jeruk < 0) {
+            alert("Angka anda salah. Harap isi kembali.");
+            cjr = true;
+          } else {
+            cjr = false;
+          }
+        } while (cjr);
+        let cnn;
+        do {
+          var nanas = prompt("Jumlah Pembelian Buah Nanas");
+          if (nanas > stnn) {
+            alert("Jumlah pembelian melebihi stok. Harap isi kembali.");
+            cnn = true;
+          } else if (nanas < 0) {
+            alert("Angka anda salah. Harap isi kembali.");
+            cnn = true;
+          } else {
+            cnn = false;
+          }
+        } while (cnn);
+        let cap;
+        do {
+          var apel = prompt("Jumlah Pembelian Buah Apel");
+          if (apel > stap) {
+            alert("Jumlah pembelian melebihi stok. Harap isi kembali.");
+            cap = true;
+          } else if (apel < 0) {
+            alert("Angka anda salah. Harap isi kembali.");
+            cap = true;
+          } else {
+            cap = false;
+          }
+        } while (cap);
+
+        if (mangga == "" && jeruk == "" && nanas == "" && apel == "") {
+          alert("Anda tidak belanja apapun. Tidak ada transaksi yang terjadi.");
+        } else if (
+          mangga == "0" &&
+          jeruk == "0" &&
+          nanas == "0" &&
+          apel == "0"
+        ) {
+          alert("Anda tidak belanja apapun. Tidak ada transaksi yang terjadi.");
+        } else {
+          parseInt(mangga, jeruk, nanas, apel);
+
+          total = mangga * hrmg + jeruk * hrjr + nanas * hrnn + apel * hrap;
+          stmg = stmg - mangga;
+          stjr = stjr - jeruk;
+          stnn = stnn - nanas;
+          stap = stap - apel;
+          var bayar = parseInt(
+            prompt(
+              "Total Pembelian : Rp. " + total + "\n" + "Masukkan Uang Anda : "
+            )
+          );
+          if (bayar < total) {
+            kurang = total - bayar;
+            //alert("Uang anda kurang Rp " + kurang)
+            tutupkurang = prompt(
+              "Uang anda kurang Rp " +
+                kurang +
+                "\n" +
+                "Silahkan Masukkan Tambahan Pembayaran:"
+            );
+            if (tutupkurang == kurang) {
+              alert("Terimakasih sudah membayar kekurangan dengan uang pas.");
+            } else if (tutupkurang > kurang) {
+              kembalians = tutupkurang - kurang;
+              alert(
+                "Terimakasih sudah membayar kekurangan, kembalian anda " +
+                  kembalians
+              );
+            } else {
+              kuranglagi = kurang - tutupkurang;
+              alert("uang anda masih kurang " + kuranglagi);
+            }
+          } else if (bayar == total) {
+            alert("Terimakasih sudah membayar dengan uang pas");
+          } else if (bayar > total) {
+            kembalian = bayar - total;
+            alert("Kembalian anda Rp " + kembalian);
+          } else {
+            alert("Anda tidak melakukan pembayaran. Transaksi gagal.");
+          }
+        }
+        var jajan = confirm("Mau Belanja lagi?");
+        if (jajan == true) {
+          allprog = true;
+        } else {
+          allprog = false;
+        }
+      }
+
+    //     //stok buah
+    //     var stmg = 25000
+    //     var stjr = 25000
+    //     var stnn = 25000
+    //     var stap = 25000
+    //     //harga buah  
+    //     var hrmg = 5000
+    //     var hrjr = 1000
+    //     var hrnn = 7000
+    //     var hrap = 3000
+    //     let allprog = true
+    //     while(allprog){
+    //     alert('Halo. Selamat Berbelanja. :D')
+    //     alert('Buah      Harga     Stok\n' + 'Mangga  ' + hrmg + '      ' + stmg + '\n' + 'Jeruk      ' + hrjr + '      ' + stjr + '\n' + 'Nanas     ' + hrnn + '     ' + stnn + '\n' + 'Apel        ' + hrap + '     ' + stap + '\n')
+    //     let cmg
+    //     do{
+    //         var mangga = prompt("Jumlah Pembelian Buah Mangga")
+    //         if (mangga > stmg){
+    //             alert('Jumlah pembelian melebihi stok. Harap isi kembali.')
+    //             cmg = true
+    //         } else if (mangga < 0){
+    //             alert('Angka anda salah. Harap isi kembali.')
+    //             cmg = true
+    //         } else{
+    //             cmg = false
+    //         }           
+    //     } while(cmg)
+    //     let cjr
+    //     do{
+    //         var jeruk = prompt("Jumlah Pembelian Buah Jeruk")
+    //         if (jeruk > stjr){
+    //             alert('Jumlah pembelian melebihi stok. Harap isi kembali.')
+    //             cjr = true
+    //         } else if (jeruk < 0){
+    //             alert('Angka anda salah. Harap isi kembali.')
+    //             cjr = true
+    //         } else{
+    //             cjr = false
+    //         }           
+    //     } while(cjr)
+    //     let cnn
+    //     do{
+    //         var nanas = prompt("Jumlah Pembelian Buah Nanas")
+    //         if (nanas > stnn){
+    //             alert('Jumlah pembelian melebihi stok. Harap isi kembali.')
+    //             cnn = true
+    //         } else if (nanas < 0){
+    //             alert('Angka anda salah. Harap isi kembali.')
+    //             cnn = true
+    //         } else{
+    //             cnn = false
+    //         }           
+    //     } while(cnn)
+    //     let cap
+    //     do{
+    //         var apel = prompt("Jumlah Pembelian Buah Apel")
+    //         if (apel > stap){
+    //             alert('Jumlah pembelian melebihi stok. Harap isi kembali.')
+    //             cap = true
+    //         } else if (apel < 0){
+    //             alert('Angka anda salah. Harap isi kembali.')
+    //             cap = true
+    //         } else{
+    //             cap = false
+    //         }           
+    //     } while(cap)
+    
+    //     if((mangga == '') && (jeruk == '') && (nanas == '') && (apel == '')){
+    //         alert('Anda tidak belanja apapun. Tidak ada transaksi yang terjadi.')
+    //     }else if((mangga == '0') && (jeruk == '0') && (nanas == '0') && (apel == '0')){
+    //         alert('Anda tidak belanja apapun. Tidak ada transaksi yang terjadi.')   
+    //     }else {
+    //         parseInt(mangga, jeruk, nanas, apel)
+
+    //         total = mangga*hrmg + jeruk*hrjr + nanas*hrnn + apel*hrap
+    //         stmg = stmg - mangga
+    //         stjr = stjr - jeruk
+    //         stnn = stnn - nanas
+    //         stap = stap - apel
+    //         var bayar = parseInt(prompt('Total Pembelian : Rp. ' + total + '\n' + "Masukkan Uang Anda : "))
+    //         if (bayar<total){
+    //             kurang = total-bayar
+    //             //alert("Uang anda kurang Rp " + kurang)
+    //             tutupkurang = prompt("Uang anda kurang Rp " + kurang + '\n' + 'Silahkan Masukkan Tambahan Pembayaran:')
+    //             if(tutupkurang == kurang){
+    //                 alert('Terimakasih sudah membayar kekurangan dengan uang pas.')
+    //             } else if(tutupkurang > kurang){
+    //                 kembalians = tutupkurang - kurang
+    //                 alert('Terimakasih sudah membayar kekurangan, kembalian anda ' + kembalians)
+    //             } else{
+    //                 kuranglagi = kurang - tutupkurang
+    //                 alert('uang anda masih kurang ' + kuranglagi)
+    //             }
+    //         }else if(bayar==total){
+    //             alert("Terimakasih sudah membayar dengan uang pas")
+    //         }else if(bayar>total){
+    //             kembalian = bayar-total
+    //             alert("Kembalian anda Rp " + kembalian)
+    //         }else {
+    //             alert('Anda tidak melakukan pembayaran. Transaksi gagal.')
+    //         }
+    //     }
+    //     var jajan = confirm("Mau Belanja lagi?")
+    //     if (jajan == true){
+    //         allprog = true
+    //     }else{
+    //         allprog = false
+    //     }
+    // }
+
+    </script>
+  </body>
+</html>

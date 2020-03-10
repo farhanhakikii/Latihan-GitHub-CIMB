@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //stok buah
+        var stmg = 25000
+        var stjr = 25000
+        var stnn = 25000
+        var stap = 25000
+        //harga buah  
+        var hrmg = 5000
+        var hrjr = 1000
+        var hrnn = 7000
+        var hrap = 3000
+        
+        do{
+        alert('Buah      Harga     Stok\n' + 'Mangga  ' + hrmg + '      ' + stmg + '\n' + 'Jeruk      ' + hrjr + '      ' + stjr + '\n' + 'Nanas     ' + hrnn + '     ' + stnn + '\n' + 'Apel        ' + hrap + '     ' + stap + '\n')
+        var mangga = prompt("Jumlah Pembelian Buah Mangga")
+        var jeruk = prompt("Jumlah Pembelian Buah Jeruk")
+        var nanas = prompt("Jumlah Pembelian Buah Nanas")
+        var apel = prompt("Jumlah Pembelian Buah Apel")
+    
+        if ((mangga > stmg) || (jeruk > stjr) || (nanas > stnn) || (apel > stap)){
+            alert('Penjualan gagal karena terdapat pembelian yang melebihi stok.')
+        }else if((mangga == '') && (jeruk == '') && (nanas == '') && (apel == '')){
+            alert('Anda tidak belanja apapun. Tidak ada transaksi yang terjadi.')
+        }else if((mangga == '0') && (jeruk == '0') && (nanas == '0') && (apel == '0')){
+            alert('Anda tidak belanja apapun. Tidak ada transaksi yang terjadi.')   
+        }else {
+            parseInt(mangga, jeruk, nanas, apel)
+
+            total = mangga*hrmg + jeruk*hrjr + nanas*hrnn + apel*hrap
+            stmg = stmg - mangga
+            stjr = stjr - jeruk
+            stnn = stnn - nanas
+            stap = stap - apel
+            var bayar = parseInt(prompt('Total Pembelian : Rp. ' + total + '\n' + "Masukkan Uang Anda : "))
+            if (bayar<total){
+                kurang = total-bayar
+                alert("Uang anda kurang Rp " + kurang)
+            }else if(bayar==total){
+                alert("Terimakasih sudah membayar dengan uang pas")
+            }else if(bayar>total){
+                kembalian = bayar-total
+                alert("Kembalian anda Rp " + kembalian)
+            }else {
+                alert('Anda tidak melakukan pembayaran. Transaksi gagal.')
+            }
+        }
+    } while((stmg > 0) || (stjr > 0) || (stnn > 0) || (stap > 0))
+    
+    //BACKUP
+    //     //stok buah
+    //     var stmg = 25000
+    //     var stjr = 25000
+    //     var stnn = 25000
+    //     var stap = 25000
+    //     //harga buah  
+    //     var hrmg = 5000
+    //     var hrjr = 1000
+    //     var hrnn = 7000
+    //     var hrap = 3000
+        
+    //     do{
+    //     alert('Buah      Harga     Stok\n' + 'Mangga  ' + hrmg + '      ' + stmg + '\n' + 'Jeruk      ' + hrjr + '      ' + stjr + '\n' + 'Nanas     ' + hrnn + '     ' + stnn + '\n' + 'Apel        ' + hrap + '     ' + stap + '\n')
+    //     var mangga = parseInt(prompt("Jumlah Pembelian Buah Mangga"))
+    //     var jeruk = parseInt(prompt("Jumlah Pembelian Buah Jeruk"))
+    //     var nanas = parseInt(prompt("Jumlah Pembelian Buah Nanas"))
+    //     var apel = parseInt(prompt("Jumlah Pembelian Buah Apel"))
+    
+    //     if ((mangga > stmg) || (jeruk > stjr) || (nanas > stnn) || (apel > stap)){
+    //         alert('Penjualan gagal karena terdapat pembelian yang melebihi stok.')
+    //     }else if((mangga < stmg) && (jeruk < stjr) && (nanas < stnn) & (apel < stap)){
+    //         total = mangga*hrmg + jeruk*hrjr + nanas*hrnn + apel*hrap
+    //         stmg = stmg - mangga
+    //         stjr = stjr - jeruk
+    //         stnn = stnn - nanas
+    //         stap = stap - apel
+    //         var bayar = parseInt(prompt('Total Pembelian : Rp. ' + total + '\n' + "Masukkan Uang Anda : "))
+    //         if (bayar<total){
+    //             kurang = total-bayar
+    //             alert("Uang Anda Kurang Rp " + kurang)
+    //         }else if(bayar==total){
+    //             alert("Terimakasih Sudah Membayar dengan Uang Pas")
+    //         }else if(bayar>total){
+    //             kembalian = bayar-total
+    //             alert("Kembalian anda Rp " + kembalian)
+    //         }
+    //     }
+    // } while((stmg > 0) || (stjr > 0) || (stnn > 0) || (stap > 0))
+    //${} buat masukin isi variabel ke dalam string
+    //pake `` bisa buat alert tanpa harus \n \t, muncul di alert sesuai dengan di souce code
+    //Big 0 Notation ==> Coba Googling
+    
+    //EXERCISE 3
+    //barang dan stok fix
+    //beri user kesempatan untuk mengulang input
+    //pake do while tiap input
+    //kasih kesempatan buat ulang bayar
+    //kasih pilihan belanja lagi atau tidak ==> pake confirm
+    //stok sudah kurang   
+    </script>   
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let home = ['Admin', 'User', 'Exit']
+    let adm = ['Add', 'Exit']
+    let index
+    let daftmenu
+    let checkout
+    let count
+    let databuah = [
+    {
+        buah: 'Mangga',
+        stok: 100,
+        harga: 7000,
+        qty: 0
+    },{
+        buah: 'Jeruk',
+        stok: 300,
+        harga: 3000,
+        qty: 0
+    },{
+        buah: 'Pisang',
+        stok: 200,
+        harga: 5000,
+        qty: 0
+    }]
+    let isRepeat = true
+    do{
+        firstPage()
+        if(homeinput == 1){
+            adminPage()
+            if(adminput == 1){
+                addbyadmin()
+            }else{
+                isRepeat = false
+            }
+        }else if(homeinput == 2){
+            do{            
+                showMenu()
+                if(daftmenu == (databuah.length+1)){
+                    showCart()
+                }else if(daftmenu == (databuah.length+2)){
+                    payment()
+                }else{
+                    buyFruit()
+                }
+            }while(isRepeat)
+        }else{
+            isRepeat = false
+        }
+    }while(isRepeat)
+
+    function firstPage(){
+        let temp = ''
+        for(let i = 0; i < home.length; i++){
+            temp += `${i+1}. ${home[i]}\n`
+        }
+        homeinput = parseInt(prompt(temp))
+    }
+
+    function addbyadmin(){
+        databuah.push(
+                    {buah: prompt('Masukkan nama buah yang ingin di tambahkan:'),
+                    stok: prompt('Masukkan stok buah yang ingin di tambahkan:'),
+                    harga: prompt('Masukkan harga buah yang ingin di tambahkan:'),
+                    qty: 0}
+                )
+    }
+
+    function adminPage(){
+        tempp = ''
+        for(let i = 0; i < adm.length; i++){
+            tempp += `${i+1}. ${adm[i]}\n`
+        }
+        adminput = parseInt(prompt(tempp))
+    }
+
+    function showMenu(){
+        let menu = ''
+        menu = `Daftar Menu:\n`
+        for(i = 0; i < databuah.length; i++){
+            menu += `${i+1}. ${databuah[i].buah} Rp.${databuah[i].harga}/pcs. Stok tersedia ${databuah[i].stok}.\n`
+        }
+        menu += `${databuah.length+1}. Cart\n`
+        menu += `${databuah.length+2}. Checkout`
+        daftmenu = parseInt(prompt(menu))
+        index = daftmenu - 1
+    }
+
+    function showCart(){
+        checkout = `Daftar Belanjaan Anda :\nNo.\tItem\tJumlah\n`        
+        count = 0
+        for(i = 0;i < databuah.length; i++){
+            if(databuah[i].qty > 0){
+            checkout += `${count+1}\t${databuah[i].buah}\t${databuah[i].qty}\n`
+            count += 1}
+        }
+        alert(checkout)
+    }
+
+    function buyFruit(){
+        do{
+            inputan = parseInt(prompt(`Mau beli berapa ${databuah[index].buah}`))
+            if((inputan + databuah[index].qty) > databuah[index].stok || inputan < 0){
+                alert(`Stok ${databuah[index].buah} tidak cukup atau anda memasukkan angka yang salah.`)
+                ulang = true
+            }else{
+                databuah[index].qty += inputan
+                ulang = false
+                 }
+        }while(ulang == true)
+        
+    }
+
+    function payment(){
+        totalprice = 0
+        for(i = 0; i < databuah.length; i++){
+            totalprice += databuah[i].harga*databuah[i].qty
+        }
+        do{ 
+            bayar = parseInt(prompt(`Total Belanja Anda ${totalprice}\nSilahkan Masukkan Uang Anda`))
+            if(bayar > totalprice){
+                alert(`Kembalian anda ${bayar - totalprice}`)
+                ulang = false
+            }else if(bayar == totalprice){
+                alert(`Terimakasih sudah membayar dengan uang pas.`)
+            ulang = false
+            }else{
+                alert(`Uang anda kurang ${totalprice - bayar}`)
+                ulang = true
+            }
+        }while(ulang == true)
+
+        for (i = 0; i < databuah.length; i++) {
+            databuah[i].stok -= databuah[i].qty
+            databuah[i].qty = 0
+            }
+            ulang = confirm('Mau Belanja Lagi?')
+    }
+    </script>
+</body>
+</html>
