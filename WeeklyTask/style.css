@@ -1,0 +1,131 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+#pagehome{
+    display: flex;
+}
+.menu{
+    background-image: url(https://images5.alphacoders.com/571/thumb-1920-571989.jpg);
+    background-color: green;
+    background-blend-mode: multiply;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    color: lightblue;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 0px ;
+    text-shadow: 0 5px 1px black;
+}
+.mainPage{
+    background: url(https://wallpapercave.com/wp/wp4068643.jpg) no-repeat;
+    background-color: lightblue;
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 100%;
+    background-size: cover;
+    margin: auto;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+
+}
+.spacearound{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 10px 50px;
+}
+li{
+    margin: 0px 20px;
+    display: inline-block;
+}
+a{
+    text-decoration: none;
+    color: lightblue;
+}
+li:hover{
+    cursor: pointer;
+    transition: ease-in 250ms, ease-out 250ms;
+    border-bottom: 2px solid lightblue;
+}
+.gambar{
+    border: 1px solid lightblue;
+}
+.gambar:hover{
+    cursor: pointer;
+    transition: ease-in 250ms, ease-out 250ms;
+    border: 2px solid greenyellow;
+}
+.bio1{
+    color: white;
+    background-color: white;
+    background-image: url(https://www.ecopetit.cat/wpic/mpic/116-1162820_naruto-wallpaper-hd.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 100%;
+    width: 100%;
+    padding: 10px 50px;
+    font-family: 'Lobster', cursive;
+}
+.pres1{
+    color: black;
+    background-color: white;
+    background-image: url(https://wallpaperaccess.com/full/114439.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 100%;
+    width: 100%;
+    padding: 10px 50px;
+    font-family: 'Lobster', cursive;
+}
+h3,h1{
+    padding: 0px 0px;
+    font-size: 20px;
+}
+.fotopres{
+    display: flex;
+    color: black;
+    padding: 20px;
+    justify-content: center;
+}
+.jutsu{
+    color: black;
+    background-color: lightgreen(194, 63, 63);
+    background-image: url(https://idnaruto.com/wp-content/uploads/2014/05/Naruto-Mode-Ashura-Manga-676.png);
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 100%;
+    width: 100%;
+    padding: 10px 50px;
+    font-family: 'Lobster', cursive;
+}
+.listjutsu{
+    display: flex;
+    height: 475px;
+    padding: 0px 50px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.btnhome{
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
